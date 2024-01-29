@@ -1,12 +1,7 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import moviesSlice from './MovieSlice';
-import searchSlice from './SearchSlice';
-import seasonSlice from './SeasonsSlice';
-// import moviesSlice from './moviesSlice';
-// import watchListSlice from './watchListSlice';
-// import searchSlice from './searchSlice';
-// import seasonSlice from './seasonSlice';
-
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import moviesSlice from "./MovieSlice";
+import searchSlice from "./SearchSlice";
+import seasonSlice from "./SeasonsSlice";
 const rootReducer = combineReducers({
   movies: moviesSlice.reducer,
   search: searchSlice.reducer,
@@ -16,5 +11,6 @@ const rootReducer = combineReducers({
 const Store = configureStore({
   reducer: rootReducer,
 });
-
+ export type RootState=ReturnType<typeof Store.getState>;
+ export type AppDispatch=typeof Store.dispatch;
 export default Store;
