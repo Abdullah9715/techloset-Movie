@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-interface MovieCardProps {
+export type MovieCardProps = {
   imageUrl: string;
   movieId: number;
   rating: number;
-}
+};
 
 const MovieCard: React.FC<MovieCardProps> = ({ imageUrl, movieId, rating }) => {
   const history = useNavigate();

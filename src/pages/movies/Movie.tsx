@@ -15,6 +15,7 @@ import { selectAllSearch } from "../../redux/SearchSlice";
 import Navbar from "../../components/navbar/Navbar";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { RootState } from "../../redux/Store";
+import Loader from "../../components/loader/Loader";
 
 export default function Movie() {
   const { movieId } = useParams();
@@ -26,7 +27,7 @@ export default function Movie() {
   const [movieData, setMovieData] = useState<Movie | Season | Search | null>(
     null
   );
-  interface Movie {
+  type Movie= {
     id: number;
     vote_average: number;
     poster_path: string;
@@ -36,7 +37,7 @@ export default function Movie() {
     overview: string;
   }
 
-  interface Season {
+  type Season ={
     id: number;
     vote_average: number;
     poster_path: string;
@@ -46,7 +47,7 @@ export default function Movie() {
     overview: string;
   }
 
-  interface Search {
+  type Search= {
     id: number;
     vote_average: number;
     poster_path: string;
@@ -89,15 +90,7 @@ export default function Movie() {
   }
 
   if (fetchMovies.pending("peding")) {
-    <div role="status">
-      <img
-        src={loader}
-        alt="svg loader"
-        style={{ width: "50px", height: "50px" }}
-      />
-
-      <span className="sr-only">Loading...</span>
-    </div>;
+   <Loader/>
   }
   return (
     <>

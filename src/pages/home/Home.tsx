@@ -13,6 +13,7 @@ import Navbar from "../../components/navbar/Navbar";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { AnyAction } from 'redux';
 import { RootState } from "../../redux/Store";
+import Loader from "../../components/loader/Loader";
 
 export default function Home() {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
@@ -52,19 +53,7 @@ export default function Home() {
       />
       {/*I Call It If fetchMovies is Pending then Display loading spinner*/}
       {isLoading && (
-        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
-          <div
-            role="status"
-            className="flex items-center justify-center bg-white bg-opacity-80 p-8 rounded shadow-md"
-          >
-            <img
-              src={loader}
-              alt="svg loader"
-              style={{ width: "50px", height: "50px" }}
-            />
-            <span className="sr-only">Loading...</span>
-          </div>
-        </div>
+        <Loader/>
       )}
 
 

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import instance from "../helper/Instance";
 
-export interface Movie {
+export type Movie ={
  id: number;
     vote_average: number;
     poster_path: string;
