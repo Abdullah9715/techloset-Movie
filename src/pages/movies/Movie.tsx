@@ -1,3 +1,4 @@
+// Important Notice that when data is get from the search page and you refresh the page then qury is null and data can not show here.
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -163,44 +164,47 @@ export default function Movie() {
                   </div>
                 </div>
               </div>
-
-              <div className="container   md:my-2  mx-auto py-4 font-roboto">
-                <div className="grid grid-cols-2 gap-4 mb-6 ">
-                  <div className="flex flex-row gap-4">
-                    <h1 className="font-bold text-[30px] leading-9 my-auto mx-2">
-                      Seasons
-                    </h1>
-                    <span className="cursor-pointer  hover:bg-[#D2D2D2] flex flex-row rounded-xl p-3  bg-[#D9D9D9] text-black text-[20px] font-bold">
-                      1
-                    </span>
-                    <span className="cursor-pointer  hover:bg-[#D2D2D2] flex flex-row rounded-xl p-3  bg-[#D9D9D9] text-black text-[20px] font-bold">
-                      2
-                    </span>
-                    <span className="cursor-pointer  hover:bg-[#D2D2D2] flex flex-row rounded-xl p-3  bg-[#D9D9D9] text-black text-[20px] font-bold">
-                      3
-                    </span>
-                    <span className="cursor-pointer  hover:bg-[#D2D2D2] flex flex-row rounded-xl p-3  bg-[#D9D9D9] text-black text-[20px] font-bold">
-                      4
-                    </span>
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-4 grid-cols-2 sm:ms-0 ms-5 gap-4 p-2">
-                  {seasons.map((season) => (
-                    <div key={season.id}>
-                      <SeasonCard
-                        imageUrl={`https://image.tmdb.org/t/p/w500${season.poster_path}`}
-                        movieId={season.id}
-                        rating={season.vote_average}
-                        name={season.name}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
           </>
         )
+      )}
+      {isLoadingSeason ? (
+        <Loader />
+      ) : (
+        <div className="container   md:my-2  mx-auto py-4 font-roboto">
+          <div className="grid grid-cols-2 gap-4 mb-6 ">
+            <div className="flex flex-row gap-4">
+              <h1 className="font-bold text-[30px] leading-9 my-auto mx-2">
+                Seasons
+              </h1>
+              <span className="cursor-pointer  hover:bg-[#D2D2D2] flex flex-row rounded-xl p-3  bg-[#D9D9D9] text-black text-[20px] font-bold">
+                1
+              </span>
+              <span className="cursor-pointer  hover:bg-[#D2D2D2] flex flex-row rounded-xl p-3  bg-[#D9D9D9] text-black text-[20px] font-bold">
+                2
+              </span>
+              <span className="cursor-pointer  hover:bg-[#D2D2D2] flex flex-row rounded-xl p-3  bg-[#D9D9D9] text-black text-[20px] font-bold">
+                3
+              </span>
+              <span className="cursor-pointer  hover:bg-[#D2D2D2] flex flex-row rounded-xl p-3  bg-[#D9D9D9] text-black text-[20px] font-bold">
+                4
+              </span>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-4 grid-cols-2 sm:ms-0 ms-5 gap-4 p-2">
+            {seasons.map((season) => (
+              <div key={season.id}>
+                <SeasonCard
+                  imageUrl={`https://image.tmdb.org/t/p/w500${season.poster_path}`}
+                  movieId={season.id}
+                  rating={season.vote_average}
+                  name={season.name}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       )}
     </>
   );
